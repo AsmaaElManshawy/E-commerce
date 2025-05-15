@@ -44,8 +44,10 @@ export class ForgetpasswordComponent {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.step.set(2);
-          this.initFormCode();
+          if (res.statusMsg === 'success') {
+            this.step.set(2);
+            this.initFormCode();
+          }
         },
       });
   }
@@ -66,8 +68,10 @@ export class ForgetpasswordComponent {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.step.set(3);
-          this.initFormReset();
+          if (res.statusMsg === 'success') {
+            this.step.set(3);
+            this.initFormReset();
+          }
         },
       });
   }
@@ -91,12 +95,14 @@ export class ForgetpasswordComponent {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.step.set(1);
-          //1) save new token
-          localStorage.removeItem('token');
-          localStorage.setItem('token', res.token);
-          // navigate to home
-          this.router.navigate(['/home']);
+          if (res.statusMsg === 'success') {
+            this.step.set(1);
+            //1) save new token
+            localStorage.removeItem('token');
+            localStorage.setItem('token', res.token);
+            // navigate to home
+            this.router.navigate(['/home']);
+          }
         },
       });
   }
