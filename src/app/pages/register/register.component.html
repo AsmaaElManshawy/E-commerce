@@ -1,0 +1,118 @@
+<section class="w-1/2 mx-auto p-4 bg-gray-50 rounded border my-5">
+  <h1 class="text-3xl font-light text-center text-green-600">Register Now</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <div class="mb-1">
+      <label for="name" class="main-label">name</label>
+      <input formControlName="name" type="text" id="name" class="main-input" />
+      <!-- alert -->
+      @let nameControl = registerForm.get('name'); @if( nameControl?.errors &&
+      nameControl?.touched ) {
+      <app-alert>
+        @if (nameControl?.getError('required')) {
+        <li>name is required</li>
+        } @if (nameControl?.getError('minlength')) {
+        <li>name minLength : 3</li>
+        } @if (nameControl?.getError('maxlength')) {
+        <li>name maxLenght : 20</li>
+        }
+      </app-alert>
+      }
+    </div>
+
+    <div class="mb-1">
+      <label for="email" class="main-label">email</label>
+      <input
+        formControlName="email"
+        type="email"
+        id="email"
+        class="main-input"
+      />
+      <!-- alert -->
+      @let emailControl = registerForm.get('email'); @if( emailControl?.errors
+      && emailControl?.touched ) {
+      <app-alert>
+        @if (emailControl?.getError('required')) {
+        <li>email is required</li>
+        } @if (emailControl?.getError('email')) {
+        <li>Enter Valid Email</li>
+        }
+      </app-alert>
+      }
+    </div>
+
+    <div class="mb-1">
+      <label for="password" class="main-label">password</label>
+      <input
+        formControlName="password"
+        type="password"
+        id="password"
+        class="main-input"
+      />
+      <!-- alert -->
+      @let passwordControl = registerForm.get('password'); @if(
+      passwordControl?.errors && passwordControl?.touched ) {
+      <app-alert>
+        @if (passwordControl?.getError('required')) {
+        <li>password is required</li>
+        } @if (passwordControl?.getError('pattern')) {
+        <li>
+          password must start with upperCase then from 6 to more any chars
+        </li>
+        }
+      </app-alert>
+      }
+    </div>
+
+    <div class="mb-1">
+      <label for="rePassword" class="main-label">rePassword</label>
+      <input
+        formControlName="rePassword"
+        type="password"
+        id="rePassword"
+        class="main-input"
+      />
+      <!-- alert -->
+      @let rePasswordControl = registerForm.get('rePassword'); @if(
+      rePasswordControl?.errors && rePasswordControl?.touched ) {
+      <app-alert>
+        @if (rePasswordControl?.getError('required')) {
+        <li>rePassword is required</li>
+        } @if (rePasswordControl?.getError('mismatch')) {
+        <li>Password confirmation is incorrect</li>
+        }
+      </app-alert>
+      }
+    </div>
+
+    <div class="mb-1">
+      <label for="phone" class="main-label">phone</label>
+      <input formControlName="phone" type="tel" id="phone" class="main-input" />
+      <!-- alert -->
+      @let phoneControl = registerForm.get('phone'); @if( phoneControl?.errors
+      && phoneControl?.touched ) {
+      <app-alert>
+        @if (phoneControl?.getError('required')) {
+        <li>phone is required</li>
+        } @if (phoneControl?.getError('pattern')) {
+        <li>accept only egypt phone numbers</li>
+        }
+      </app-alert>
+      }
+    </div>
+
+    <button
+      [disabled]="isLoading()"
+      type="submit"
+      class="btn-main"
+      (click)="submitForm()"
+    >
+      SignUP @if (isLoading()) {
+      <i class="fas fa-spin fa-spinner"></i>
+      }
+    </button>
+
+    @if (isSuccess()) {
+    <p class="bg-gray-400 text-white px-2 py-4 border">Account Created</p>
+    }
+  </form>
+</section>

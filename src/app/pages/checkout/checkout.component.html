@@ -1,0 +1,47 @@
+<section class="w-[75%] p-4 border rounded shadow bg-gray-100 mx-auto my-3">
+  <h1 class="text-center text-3xl text-green-600">CheckOut</h1>
+
+  <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">
+    <div class="mb-1">
+      <label for="details" class="block mb-2 text-sm font-medium text-gray-900"
+        >Details</label
+      >
+      <textarea
+        formControlName="details"
+        id="details"
+        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      ></textarea>
+    </div>
+
+    <div class="mb-1">
+      <label for="phone" class="block mb-2 text-sm font-medium text-gray-900"
+        >Phone</label
+      >
+      <input
+        formControlName="phone"
+        type="tel"
+        id="phone"
+        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+    </div>
+
+    <div class="mb-1">
+      <label for="city" class="block mb-2 text-sm font-medium text-gray-900"
+        >City</label
+      >
+      <input
+        formControlName="city"
+        type="text"
+        id="city"
+        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+    </div>
+
+    <button
+      class="bg-green-600 text-white px-12 py-2 border rounded hover:bg-green-800 transition-colors duration-500"
+      routerLink="/checkout"
+    >
+      Online Paymen
+    </button>
+  </form>
+</section>

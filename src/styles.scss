@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "flowbite/src/themes/default";
+
+@plugin "flowbite/plugin";
+
+@source "../node_modules/flowbite";
+
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
+
+@import "ngx-toastr/toastr";
+
+body {
+  font-family: "Montserrat", serif;
+}
+
+.btn-main {
+  @apply disabled:bg-gray-700 bg-green-600 text-white px-12 py-2 rounded border hover:bg-green-800 transition-colors duration-500;
+}
+
+.main-input {
+  @apply bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5;
+}
+.main-label {
+  @apply block mb-2 text-sm font-medium text-gray-900;
+}

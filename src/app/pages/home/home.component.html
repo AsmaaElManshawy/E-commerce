@@ -1,0 +1,68 @@
+<!-- carousel -->
+<section>
+  <div class="grid md:grid-cols-[minmax(0,1fr)_30%]">
+    <div>
+      <owl-carousel-o [options]="mainCustomOptions">
+        <ng-template carouselSlide>
+          <img src="/images/img1.avif" class="w-full h-[300px]" alt="" />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img2.avif" class="w-full h-[300px]" alt="" />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img3.avif" class="w-full h-[300px]" alt="" />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img4.avif" class="w-full h-[300px]" alt="" />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img5.avif" class="w-full h-[300px]" alt="" />
+        </ng-template>
+        <ng-template carouselSlide>
+          <img src="/images/img6.avif" class="w-full h-[300px]" alt="" />
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+    <div>
+      <img src="/images/grocery-banner.png" class="w-full h-[150px]" alt="" />
+      <img
+        src="/images/grocery-banner-2.jpeg"
+        class="w-full h-[150px]"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
+<!-- carousel -->
+<section>
+  <h2 class="text-4xl my-2">Shop Popular Categories</h2>
+  <owl-carousel-o [options]="customOptions">
+    @for (cat of categories(); track cat._id) {
+    <ng-template carouselSlide>
+      <!-- content -->
+      <div>
+        <img [src]="cat.image" class="h-[250px]" [alt]="cat.name" />
+        <h3 class="text-green-600">{{ cat.name }}</h3>
+      </div>
+    </ng-template>
+    }
+  </owl-carousel-o>
+</section>
+<!-- products -->
+<section>
+  <h2 class="text-4xl">Popular Products</h2>
+  <div
+    class="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-2 gap-y-4 p-5 mt-3"
+  >
+    @for (prod of products().slice(0,15); track prod.id) {
+    <app-card
+      [categoryName]="prod.category.name"
+      [imageCover]="prod.imageCover"
+      [price]="prod.price"
+      [rating]="prod.ratingsAverage"
+      [title]="prod.title"
+      [prod_id]="prod.id"
+    ></app-card>
+    }
+  </div>
+</section>

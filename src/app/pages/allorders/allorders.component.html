@@ -1,0 +1,32 @@
+@if (orderDetails().isPaid) {
+
+<section class="w-[75%] p-4 border rounded shadow bg-gray-100 mx-auto">
+  <h1 class="text-center text-3xl text-green-600">Your Order</h1>
+  <span class="text-green-600"
+    >Total Cart Price : {{ orderDetails().totalOrderPrice | currency : "GBP" }}
+  </span>
+  @for (Cprod of cartDetails(); track $index) {
+  <div class="grid md:grid-cols-[10%_minmax(0,1fr)] my-3 border-b">
+    <div class="me-3">
+      <img
+        [src]="Cprod.product.imageCover"
+        class="w-full h-[100px] object-contain"
+        [alt]="Cprod.product.title"
+      />
+    </div>
+
+    <div class="flex justify-between items-center">
+      <div>
+        <h3>{{ Cprod.product.title }}</h3>
+        <h4>Price : {{ Cprod.price | currency : "GBP" }}</h4>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <span> {{ Cprod.count }} </span>
+      </div>
+    </div>
+  </div>
+  }
+</section>
+
+}

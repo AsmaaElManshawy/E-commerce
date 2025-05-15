@@ -1,0 +1,28 @@
+<div class="flex gap-12">
+  <div class="w-1/4">
+    <img [src]="specificProduct().imageCover" [alt]="specificProduct().title" />
+  </div>
+  <div class="w-3/4 self-center">
+    <h2 class="text-green-700 text-lg">{{ specificProduct().title }}</h2>
+    <h4 class="text-green-600 text-lg my-2">
+      {{ specificProduct().category.name }}
+    </h4>
+    <p>{{ specificProduct().description }}</p>
+    <div class="flex justify-evenly items-center">
+      <span> {{ specificProduct().price | currency : "EGP" }} </span>
+      <span> quantity : {{ specificProduct().quantity }} </span>
+      <div class="flex items-center">
+        <i class="fas fa-star text-yellow-300"></i>
+        <span class="text-gray-500">
+          {{ specificProduct().ratingsAverage }}
+        </span>
+      </div>
+    </div>
+    <button
+      (click)="addToCart(specificProduct()._id)"
+      class="bg-green-600 px-6 py-2 rounded border text-white my-3 block flex-none self-center w-[80%]"
+    >
+      Add to cart
+    </button>
+  </div>
+</div>
