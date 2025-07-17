@@ -4,7 +4,8 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import { authGuard } from './core/guards/auth/auth.guard';
 import { loggedGuard } from './core/guards/logged/logged.guard';
-
+import { getPrerenderParams } from './app.config.server';
+getPrerenderParams();
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -101,3 +102,4 @@ export const routes: Routes = [
     title: '404',
   },
 ];
+
