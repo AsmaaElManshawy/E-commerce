@@ -18,6 +18,8 @@ import { CartService } from '../../core/services/cart/cart.service';
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
 })
+
+
 export class DetailsComponent implements OnInit {
   private readonly productsService = inject(ProductsService);
   private readonly activatedRoute = inject(ActivatedRoute);
@@ -51,4 +53,29 @@ export class DetailsComponent implements OnInit {
       },
     });
   }
+
 }
+
+
+
+//   export async function getPrerenderParams() {
+//   // Example: Fetch or define the list of valid IDs
+//   const productsService = inject(ProductsService);
+//   let products: IProducts[] = [];
+//    function getProductsData(): void {
+//     productsService.getAllProducts().subscribe({
+//       next: (res) => {
+//         console.log(res);
+//         console.log(res.data);
+//         products=res.data;
+//       },
+//     });
+//   }
+//   getProductsData();
+//   // You can fetch these from an API or database
+//   let ids = [];
+//   for (let i = 0; i < products.length; i++) {
+//     ids.push(products[i].id);
+//   }
+//   return ids.map(id => ({ id }));
+// }
