@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class ForgetpasswordComponent {
   step: WritableSignal<number> = signal(1);
+  mail: WritableSignal<string> = signal("");
 
   private readonly formBuilder = inject(FormBuilder);
   private readonly forgetpasswordService = inject(ForgetpasswordService);
@@ -45,6 +46,7 @@ export class ForgetpasswordComponent {
         next: (res) => {
           console.log(res);
           if (res.statusMsg === 'success') {
+            this.mail.set(this.verifyEmail.value);
             this.step.set(2);
             this.initFormCode();
           }
@@ -68,7 +70,7 @@ export class ForgetpasswordComponent {
       .subscribe({
         next: (res) => {
           console.log(res);
-          if (res.statusMsg === 'success') {
+          if (res.status === 'Success') {
             this.step.set(3);
             this.initFormReset();
           }
@@ -106,4 +108,16 @@ export class ForgetpasswordComponent {
         },
       });
   }
+
+
+  /*
+  update logged user data
+  /users/updateMe/
+  put
+  {
+    "name": "Ahmed Abd Al-Muti",
+    "email": "ahmedmutt2i2@gmail.com",
+    "phone": "01010700700"
+}
+  */
 }

@@ -35,7 +35,7 @@
 </section>
 <!-- carousel -->
 <section>
-  <h2 class="text-4xl my-2">Shop Popular Categories</h2>
+  <h2 class="text-4xl my-3 text-green-500 text-center p-1 w-fit mx-auto">Shop Popular Categories</h2>
   <owl-carousel-o [options]="customOptions">
     @for (cat of categories(); track cat._id) {
     <ng-template carouselSlide>
@@ -50,7 +50,7 @@
 </section>
 <!-- products -->
 <section>
-  <h2 class="text-4xl">Popular Products</h2>
+  <h2 class="text-4xl text-green-500 text-center p-1 w-fit my-2 mx-auto">Popular Products</h2>
   <div
     class="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-2 gap-y-4 p-5 mt-3"
   >

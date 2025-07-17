@@ -1,8 +1,10 @@
 <section class="w-[75%] p-4 border rounded shadow bg-gray-100 mx-auto my-3">
-  <h1 class="text-center text-3xl text-green-600">Shop Cart</h1>
-  <span class="text-green-600"
+  <div class="bg-green-500 px-4 py-2">
+    <h1 class="text-center text-3xl text-white">Shop Cart</h1>
+  <span class="text-white text-xl"
     >Total Cart Price : {{ cartDetails().totalCartPrice | currency : "GBP" }}
   </span>
+  </div>
   @if (cartDetails().totalCartPrice) { @for (prod of cartDetails().products;
   track prod.product._id) {
   <div class="grid md:grid-cols-[10%_minmax(0,1fr)] my-3 border-b">
@@ -18,8 +20,8 @@
       <div>
         <h3>{{ prod.product.title }}</h3>
         <h4>Price : {{ prod.price | currency : "GBP" }}</h4>
-        <button (click)="removeItem(prod.product._id)">
-          <i class="fas fa-trash-can text-green-600"></i> Remove
+        <button (click)="removeItem(prod.product._id)" class="text-green-600 py-2" >
+          <i class="fas fa-trash-can"></i> Remove
         </button>
       </div>
 
@@ -41,7 +43,7 @@
     </div>
   </div>
   } } @else {
-  <h1 class="text-center text-green-700">No Data Found</h1>
+  <h1 class="text-center text-green-500 text-6xl my-5">No Data Found</h1>
   }
   <button
     class="bg-green-600 text-white px-12 py-2 border rounded hover:bg-green-800 transition-colors duration-500"
